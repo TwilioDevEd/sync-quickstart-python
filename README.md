@@ -1,3 +1,5 @@
+# Sync Quickstart for Python
+
 This application should give you a ready-made starting point for writing your
 own real-time apps with Sync. Before we begin, we need to collect
 all the config values we need to run the application:
