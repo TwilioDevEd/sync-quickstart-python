@@ -1,0 +1,2 @@
+Flask==0.10.1
+fake-factory==0.5.3
