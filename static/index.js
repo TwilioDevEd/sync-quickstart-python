@@ -16,10 +16,11 @@ $(function () {
   var syncDoc;
 
   //Get an access token for the current user, passing a device ID
-  //For browser-based apps, we'll always just use the
-  //value "browser"
+  //In browser-based apps, every tab is like its own unique device
+  //synchronizing state -- so we'll use a random UUID to identify
+  //this tab.
   $.getJSON('/token', {
-    device: 'browser'
+    device: getDeviceId()
   }, function (tokenResponse) {
     //Initialize the Sync client
     accessManager = new Twilio.AccessManager(tokenResponse.token);
@@ -78,6 +79,17 @@ $(function () {
     }
   }
 
+  //Generate random UUID to identify this browser tab
+  //For a more robust solution consider a library like
+  //fingerprintjs2: https://github.com/Valve/fingerprintjs2
+  function getDeviceId() {
+    return 'browser-' + 
+      'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+         var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
+         return v.toString(16);
+       });
+  }
+  
   //Read the state of the UI and create a new document
   function readGameBoardFromUserInterface() {
     var board = [
