@@ -1,7 +1,7 @@
 import os
 from flask import Flask, jsonify, request
 from faker import Factory
-from twilio.access_token import AccessToken, SyncGrant
+from twilio.jwt.access_token import AccessToken, SyncGrant
 
 app = Flask(__name__)
 fake = Factory.create()
