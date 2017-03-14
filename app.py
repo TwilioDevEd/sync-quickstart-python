@@ -1,5 +1,5 @@
 import os
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, send_from_directory
 from faker import Factory
 from twilio.jwt.access_token import AccessToken, SyncGrant
 
@@ -9,6 +9,10 @@ fake = Factory.create()
 @app.route('/')
 def index():
     return app.send_static_file('index.html')
+
+@app.route('/<path:path>')
+def send_js(path):
+    return send_from_directory('static', path)
 
 @app.route('/token')
 def token():
