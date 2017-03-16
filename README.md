@@ -58,7 +58,7 @@ Now we should be all set! Run the application using the `python` command.
 python app.py
 ```
 
-Your application should now be running at [http://localhost:5000](http://localhost:5000). 
+Your application should now be running at [http://localhost:4567](http://localhost:4567). 
 Open this page in a couple browsers or tabs, and start playing!
 
 ![screenshot of sync app](tic-tac-twilio.png)

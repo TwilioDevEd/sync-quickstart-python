@@ -1,5 +1,5 @@
 import os
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, send_from_directory
 from faker import Factory
 from twilio.jwt.access_token import AccessToken, SyncGrant
 
@@ -9,6 +9,10 @@ fake = Factory.create()
 @app.route('/')
 def index():
     return app.send_static_file('index.html')
+
+@app.route('/<path:path>')
+def send_js(path):
+    return send_from_directory('static', path)
 
 @app.route('/token')
 def token():
@@ -21,19 +25,15 @@ def token():
     # create a randomly generated username for the client
     identity = fake.user_name()
 
-    # Create a unique endpoint ID for the 
-    device_id = request.args.get('device')
-    endpoint = "TwilioSyncDemo:{0}:{1}".format(identity, device_id)
-
     # Create access token with credentials
     token = AccessToken(account_sid, api_key, api_secret, identity)
 
     # Create a Sync grant and add to token
-    sync_grant = SyncGrant(endpoint_id=endpoint, service_sid=service_sid)
+    sync_grant = SyncGrant(service_sid=service_sid)
     token.add_grant(sync_grant)
 
     # Return token info as JSON
     return jsonify(identity=identity, token=token.to_jwt())
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(port=4567, debug=True)
