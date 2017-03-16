@@ -36,4 +36,4 @@ def token():
     return jsonify(identity=identity, token=token.to_jwt())
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(port=4567, debug=True)
