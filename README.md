@@ -1,3 +1,7 @@
+<a href="https://www.twilio.com">
+  <img src="https://static0.twilio.com/marketing/bundles/marketing/img/logos/wordmark-red.svg" alt="Twilio" width="250" />
+</a>
+
 # Sync Quickstart for Python
 
 This application should give you a ready-made starting point for writing your
@@ -23,15 +27,9 @@ curl -X POST https://preview.twilio.com/Sync/Services \
  -u 'SKXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX:your_api_secret'
 ```
 
-## A Note on API Keys
-
-When you generate an API key pair at the URLs above, your API Secret will only
-be shown once - make sure to save this in a secure location, 
-or possibly your `~/.bash_profile`.
-
 ## Setting Up The Python Application
 
-This application uses the lightweight [Flask Framework](http://flask.pocoo.org/). 
+This application uses the lightweight [Flask Framework](http://flask.pocoo.org/).
 Begin by creating a configuration file for your application:
 
 ```bash
@@ -49,7 +47,7 @@ source .env
 Next, we need to install our depenedencies:
 
 ```bash
-sudo pip install -r requirements.txt
+pip install -r requirements.txt
 ```
 
 Now we should be all set! Run the application using the `python` command.
@@ -58,7 +56,7 @@ Now we should be all set! Run the application using the `python` command.
 python app.py
 ```
 
-Your application should now be running at [http://localhost:4567](http://localhost:4567). 
+Your application should now be running at [http://localhost:4567](http://localhost:4567).
 Open this page in a couple browsers or tabs, and start playing!
 
 ![screenshot of sync app](tic-tac-twilio.png)
